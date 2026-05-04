@@ -142,29 +142,60 @@
         </div>
     </div>
 
-    <script>
+   <script>
         /* =========================================================
-           👇 UPDATE THIS SECTION EVERY DAY 👇
+           👇 PRE-LOAD YOUR 3 DAYS HERE 👇
            ========================================================= */
         
-        const todaysUpdate = {
-            letter: "Good morning! I hope you have a wonderful day today.",
+        const scheduledUpdates = {
             
-            agenda: "• 9:00 AM - Class<br>• 1:00 PM - Lunch<br>• 6:00 PM - Call me!",
+            // --- DAY 1 (TODAY) ---
+            "2026-05-05": {
+                letter: "Happy Tuesday, Mishel! I hope today is amazing for you.",
+                agenda: "• 10 AM - Morning Class<br>• 1 PM - Lunch<br>• 8 PM - Call me!",
+                photoUrl: "day1.jpg" 
+            },
             
-            // This is the ONLY image you change every day!
-            photoUrl: "daily-photo.jpg" 
+            // --- DAY 2 (TOMORROW) ---
+            "2026-05-06": {
+                letter: "Happy Wednesday! We are halfway through the week. Keep going strong!",
+                agenda: "• 9 AM - Lab work<br>• 3 PM - Study session<br>• Drink water!",
+                photoUrl: "day2.jpg" 
+            },
+
+            // --- DAY 3 (THURSDAY) ---
+            "2026-05-07": {
+                letter: "Good morning! Just a little note to remind you how much I care.",
+                agenda: "• Relaxing today!<br>• Let's watch a movie tonight.",
+                photoUrl: "day3.jpg" 
+            }
         };
 
         /* =========================================================
            👆 STOP UPDATING HERE 👆
            ========================================================= */
 
-        document.getElementById('letter-content').innerHTML = todaysUpdate.letter;
-        document.getElementById('agenda-content').innerHTML = todaysUpdate.agenda;
-        
-        if(todaysUpdate.photoUrl) {
-            document.getElementById('photo-content').innerHTML = `<img src="${todaysUpdate.photoUrl}" class="daily-photo" alt="Photo of the Day">`;
+        // Figure out what day it is locally
+        const today = new Date();
+        const offset = today.getTimezoneOffset() * 60000;
+        const localDate = new Date(today.getTime() - offset).toISOString().split('T')[0];
+
+        // Find the matching update
+        const todaysUpdate = scheduledUpdates[localDate];
+
+        // Put it on the screen
+        if (todaysUpdate) {
+            document.getElementById('letter-content').innerHTML = todaysUpdate.letter;
+            document.getElementById('agenda-content').innerHTML = todaysUpdate.agenda;
+            
+            if(todaysUpdate.photoUrl) {
+                document.getElementById('photo-content').innerHTML = `<img src="${todaysUpdate.photoUrl}" class="daily-photo" alt="Photo of the Day">`;
+            }
+        } else {
+            // The backup message if you haven't loaded anything for the current day
+            document.getElementById('letter-content').innerHTML = "I'm working on today's surprise! Check back a little later ❤️";
+            document.getElementById('agenda-content').innerHTML = "• Thinking of you<br>• Preparing something special";
+            document.getElementById('photo-content').innerHTML = ""; 
         }
     </script>
 
