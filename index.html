@@ -4,97 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello There, My Mishel!</title>
+    
+    <!-- Importing the 'Handlee' font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+
     <style>
-        /* --- DESIGN & COLORS --- */
+        /* --- MAIN BACKGROUND --- */
         body {
-            background-color: #e5b84e; /* Darker yellow background */
+            background-color: #F2C14D; /* Main BG Color */
             display: flex;
             justify-content: center;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            padding: 20px 10px;
+            font-family: 'Handlee', cursive; /* Applied your Figma font */
             margin: 0;
-            color: #725a2b; 
+            padding: 20px 0; /* Gives a little space at the very top and bottom to scroll */
+            color: #4a3b1c; 
         }
 
+        /* --- THE SCROLLABLE RECTANGLE --- */
         .container {
-            background-color: #fceea4; /* Light yellow main card */
-            width: 100%;
-            max-width: 450px;
+            background-color: #FCECA6;
+            width: 310px; /* Exact Figma width */
+            /* Using min-height ensures it's at least as long as your design, but can grow if needed */
+            min-height: 1489px; 
             border-radius: 25px;
-            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers everything inside perfectly */
+            padding: 30px 0; 
             box-sizing: border-box;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* --- TOP STATIC IMAGES STYLING --- */
-        .malayalam-badge {
-            display: block;
-            margin: 0 auto 15px auto;
-            max-width: 150px; /* Adjust this to make the top badge bigger or smaller */
+        /* --- IMAGES & ILLUSTRATIONS --- */
+        .flower-pattern {
+            width: 262px;
+            height: 45px;
+            object-fit: contain;
+            margin-bottom: 15px;
         }
 
-        .curly-flower {
-            display: block;
-            margin: 0 auto 10px auto;
-            max-width: 90%; /* Keeps the curly flower inside the borders */
+        .malayalam-badge {
+            width: 107px;
+            height: 77px;
+            object-fit: contain;
+            margin-bottom: 15px;
         }
 
         .top-illustration {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            display: block;
+            width: 258px;
+            height: 258px;
+            object-fit: cover;
+            border-radius: 15px; /* Added a slight curve just in case, remove if not needed */
+            margin-bottom: 20px;
         }
 
-        /* --- TEXT AND BOX STYLING --- */
+        /* --- TEXT STYLING --- */
         h1 {
-            text-align: center;
-            font-size: 1.3rem;
-            margin-top: 20px;
-            margin-bottom: 35px;
-            letter-spacing: 1.5px;
+            font-size: 20px; /* Exact Figma size */
             font-weight: normal;
-        }
-
-        .section {
-            margin-bottom: 30px;
+            text-align: center;
+            margin: 0 0 25px 0;
+            letter-spacing: 1px;
         }
 
         .section-title {
+            font-size: 18px;
             text-align: center;
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
+        /* --- THE CONTENT BOXES --- */
+        /* Base settings shared by all boxes */
         .content-box {
-            background-color: #fdf5c9;
-            border: 4px solid #f6d269;
-            border-radius: 15px;
-            padding: 20px;
-            min-height: 120px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #4a3b1c;
+            border-radius: 15px; /* Exact Figma curve */
+            box-sizing: border-box;
+            padding: 15px;
+            margin-bottom: 25px;
+            overflow-y: auto; /* Allows scrolling inside the box if text gets too long */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font for reading */
+            font-size: 14px;
         }
 
+        /* 1. Mini Letter Box */
+        .letter-box {
+            width: 262px;
+            height: 167px;
+            background-color: #FFFAE3;
+            border: 4px solid #FFFAE3;
+        }
+
+        /* 2. Agenda Box */
         .agenda-box {
-            min-height: 250px;
+            width: 262px;
+            height: 348px;
+            background-color: #FFFAE3;
+            border: 4px solid #FFFAE3;
         }
 
-        /* Styling for your daily photo */
-        .content-box img.daily-photo {
+        /* 3. Photo Box */
+        .photo-box {
+            width: 262px;
+            height: 262px; /* Perfect square matching your specs */
+            background-color: #FFFAE3;
+            border: 4px solid #F2C14D; /* Exact Figma stroke color */
+            padding: 0; /* Remove padding so the image touches the borders */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Keeps the photo inside the curved borders */
+        }
+
+        .photo-box img.daily-photo {
             width: 100%;
-            border-radius: 8px;
-            display: block;
-            margin: 0 auto;
+            height: 100%;
+            object-fit: cover; /* Ensures the photo fills the square without warping */
         }
 
         ul {
             margin-top: 0;
             padding-left: 20px;
+        }
+        
+        a {
+            color: #d18a1d;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -102,72 +139,58 @@
 
     <div class="container">
         
-        <!-- ==========================================
-             YOUR 3 PERMANENT TOP IMAGES 
-             (Upload these once to GitHub!)
-             ========================================== -->
-             
-        <!-- 1. The Malayalam Text Badge -->
+        <!-- TOP FLOWER PATTERN -->
+        <img src="curly-flower.png" alt="Flower Pattern" class="flower-pattern" onerror="this.style.display='none'">
+
+        <!-- BADGE -->
         <img src="badge.png" alt="Malayalam Text" class="malayalam-badge" onerror="this.style.display='none'">
         
-        <!-- 2. The Curly Flower Divider -->
-        <img src="curly-flower.png" alt="Decorative Flower" class="curly-flower" onerror="this.style.display='none'">
-
-        <!-- 3. The Main Illustration -->
+        <!-- ILLUSTRATION -->
         <img src="illustration.png" alt="Couple Illustration" class="top-illustration" onerror="this.style.display='none'">
         
-        <!-- Optional: Another curly flower for the bottom if you cut it into 3 parts! -->
-        <img src="curly-flower.png" alt="Decorative Flower" class="curly-flower" onerror="this.style.display='none'">
-
-        <!-- ========================================== -->
-
+        <!-- MAIN TITLE -->
         <h1>HELLO THERE, MY MISHEL!</h1>
 
-        <!-- MINI LETTER SECTION -->
-        <div class="section">
-            <div class="section-title">MINI LETTER</div>
-            <div class="content-box" id="letter-content"></div>
-        </div>
+        <!-- MINI LETTER -->
+        <div class="section-title">MINI LETTER</div>
+        <div class="content-box letter-box" id="letter-content"></div>
 
-        <!-- TODAYS AGENDA SECTION -->
-        <div class="section">
-            <div class="section-title">TODAYS AGENDA</div>
-            <div class="content-box agenda-box" id="agenda-content"></div>
-        </div>
+        <!-- AGENDA -->
+        <div class="section-title">TODAYS AGENDA</div>
+        <div class="content-box agenda-box" id="agenda-content"></div>
 
-        <!-- PHOTO OF THE DAY SECTION -->
-        <div class="section">
-            <div class="section-title">PHOTO OF THE DAY</div>
-            <div class="content-box" id="photo-content"></div>
-        </div>
+        <!-- PHOTO OF THE DAY -->
+        <div class="section-title">PHOTO OF THE DAY</div>
+        <div class="content-box photo-box" id="photo-content"></div>
+
+        <!-- BOTTOM FLOWER PATTERN -->
+        <img src="curly-flower.png" alt="Flower Pattern" class="flower-pattern" onerror="this.style.display='none'" style="margin-top: 10px;">
+
     </div>
 
-   <script>
+    <script>
         /* =========================================================
-           👇 PRE-LOAD YOUR 3 DAYS HERE 👇
+           👇 PRE-LOAD YOUR DAYS HERE 👇
            ========================================================= */
         
         const scheduledUpdates = {
             
-            // --- DAY 1 (TODAY) ---
             "2026-05-05": {
                 letter: "Happy Tuesday, Mishel! I hope today is amazing for you.",
-                agenda: "• 10 AM - Morning Class<br>• 1 PM - Lunch<br>• 8 PM - Call me!",
-                photoUrl: "day1.png" 
+                agenda: "• 10 AM - Morning Class<br>• 1 PM - Lunch<br>• <a href='https://youtube.com/watch?v=example' target='_blank'>Origami Crane Tutorial</a><br>• 8 PM - Call me!",
+                photoUrl: "day1.jpg" 
             },
             
-            // --- DAY 2 (TOMORROW) ---
             "2026-05-06": {
                 letter: "Happy Wednesday! We are halfway through the week. Keep going strong!",
-                agenda: "• 9 AM - Lab work<br>• 3 PM - Study session<br>• Drink water!",
-                photoUrl: "day2.png" 
+                agenda: "• 9 AM - Lab work<br>• <a href='https://example.com/recipe' target='_blank'>Pasta Recipe for Dinner</a><br>• Drink water!",
+                photoUrl: "day2.jpg" 
             },
 
-            // --- DAY 3 (THURSDAY) ---
             "2026-05-07": {
                 letter: "Good morning! Just a little note to remind you how much I care.",
                 agenda: "• Relaxing today!<br>• Let's watch a movie tonight.",
-                photoUrl: "day3.png" 
+                photoUrl: "day3.jpg" 
             }
         };
 
@@ -175,15 +198,12 @@
            👆 STOP UPDATING HERE 👆
            ========================================================= */
 
-        // Figure out what day it is locally
         const today = new Date();
         const offset = today.getTimezoneOffset() * 60000;
         const localDate = new Date(today.getTime() - offset).toISOString().split('T')[0];
 
-        // Find the matching update
         const todaysUpdate = scheduledUpdates[localDate];
 
-        // Put it on the screen
         if (todaysUpdate) {
             document.getElementById('letter-content').innerHTML = todaysUpdate.letter;
             document.getElementById('agenda-content').innerHTML = todaysUpdate.agenda;
@@ -192,7 +212,6 @@
                 document.getElementById('photo-content').innerHTML = `<img src="${todaysUpdate.photoUrl}" class="daily-photo" alt="Photo of the Day">`;
             }
         } else {
-            // The backup message if you haven't loaded anything for the current day
             document.getElementById('letter-content').innerHTML = "I'm working on today's surprise! Check back a little later ❤️";
             document.getElementById('agenda-content').innerHTML = "• Thinking of you<br>• Preparing something special";
             document.getElementById('photo-content').innerHTML = ""; 
